@@ -67,21 +67,6 @@ function HomeContent() {
     }
   }, [searchParams]);
 
-  const handleDisconnect = async () => {
-    try {
-      await fetch("/api/auth/tiktok/disconnect", { method: "POST" });
-      setIsConnected(false);
-      setNotification({
-        type: "success",
-        message: "TikTok account disconnected.",
-      });
-    } catch {
-      setNotification({
-        type: "error",
-        message: "Failed to disconnect. Please try again.",
-      });
-    }
-  };
 
   return (
     <> 
@@ -127,7 +112,7 @@ function HomeContent() {
               {!isLoading && (
                 <TikTokConnectButton
                   isConnected={isConnected}
-                  onDisconnect={handleDisconnect}
+                  
                 />
               )}
             </div>
@@ -174,10 +159,11 @@ function HomeContent() {
               <p className="mb-4 text-center text-sm text-muted-foreground">
                 Connect your TikTok Ads account to start creating campaigns
               </p>
-              <TikTokConnectButton
+             {  !isLoading && <TikTokConnectButton
                 isConnected={false}
-                onDisconnect={handleDisconnect}
-              />
+           
+              />}
+             
             </CardContent>
           </Card>
         )}

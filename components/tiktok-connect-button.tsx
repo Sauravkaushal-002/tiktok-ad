@@ -6,12 +6,12 @@ import { Loader2 } from "lucide-react";
 
 interface TikTokConnectButtonProps {
   isConnected: boolean;
-  onDisconnect: () => Promise<void>;
+ 
 }
 
 export function TikTokConnectButton({
   isConnected,
-  onDisconnect,
+  
 }: TikTokConnectButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,14 +21,7 @@ export function TikTokConnectButton({
     window.location.href = "/api/auth/tiktok";
   };
 
-  const handleDisconnect = async () => {
-    setIsLoading(true);
-    try {
-      await onDisconnect();
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   if (isConnected) {
     return (
@@ -37,18 +30,7 @@ export function TikTokConnectButton({
           <div className="h-2 w-2 rounded-full bg-green-500" />
           <span className="text-sm text-muted-foreground">Connected</span>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handleDisconnect}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            "Disconnect"
-          )}
-        </Button>
+   
       </div>
     );
   }

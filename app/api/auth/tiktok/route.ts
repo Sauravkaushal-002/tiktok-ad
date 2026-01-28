@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export async function GET(request: NextRequest) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    const redirectUri = `${baseUrl}/api/auth/tiktok/callback`;
+    const redirectUri = `${"https://reindeer-winning-teal.ngrok-free.app"}/api/auth/tiktok/callback`;
   
     // Generate a random state for CSRF protection
     const state = crypto.randomUUID();
