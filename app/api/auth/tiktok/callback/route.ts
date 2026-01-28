@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   const error = searchParams.get("error");
 
   // Get the base URL for redirects
-  const baseUrl = "https://reindeer-winning-teal.ngrok-free.app"
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
   // Check for errors from TikTok
   if (error) {
